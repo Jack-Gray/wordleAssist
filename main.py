@@ -35,6 +35,7 @@ def get_patterns():
     return patterns
 
 
+# TODO: Refactor to reduce complexity
 def optimize_patterns(constraints):
     optimized_patterns = []
     unknown_letter_patterns = []
@@ -60,10 +61,12 @@ def optimize_patterns(constraints):
         for index in unknowns[letter]:
             if new_pattern[index] == "_":
                 single_unknown_letter_patterns.append(new_pattern[:index] + letter + new_pattern[index + 1:])
+        optimized_patterns += single_unknown_letter_patterns
         unknown_letter_patterns.append(single_unknown_letter_patterns)
 
     # if more than one unknown was used, make new_patterns representing all possible combinations
     if len(unknowns) > 1:
+        optimized_patterns.clear()
         detailed_unknown_letter_patterns = []
         while len(unknown_letter_patterns) >= 2:
             detailed_unknown_letter_patterns.clear()
@@ -97,7 +100,6 @@ def get_constraints(patterns):
     return constraints
 
 
-# TODO: Optimize the hell out of this, time increases exponentially with each unknown space
 def create_words():
     file = None
     if filename is not None:
