@@ -136,10 +136,9 @@ def create_words():
                     if checker.check(word):
                         satisfies_constraints = True
                         for letter in constraints:
-                            pos = []
-                            for iteration in re.finditer(letter, word):
-                                pos.append(iteration.regs[0][0])
-                            if len(set(constraints[letter]).intersection(pos)) == 0:
+                            # check if word contains a known letter in an illegal location
+                            occurrences = findOccurrences(word, letter)
+                            if not occurrences.issubset(constraints[letter]):
                                 satisfies_constraints = False
                         if satisfies_constraints:
                             print("word found: " + word)
