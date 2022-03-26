@@ -21,6 +21,10 @@ def string_logical_or(first_string, second_string, null_char=''):
     return ''.join(char_results), overlap
 
 
+def findOccurrences(input_string, character):
+    return {i for i, letter in enumerate(input_string) if letter == character}
+
+
 # TODO: Allow a choice between standard input and regex
 def get_patterns():
     cont = True
