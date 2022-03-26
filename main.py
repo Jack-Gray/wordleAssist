@@ -29,7 +29,8 @@ def findOccurrences(input_string, character):
 def get_patterns():
     cont = True
     patterns = []
-    print("Enter a pattern for each known letter below, one at a time. Use underscores for unknown letters.")
+    print("Provide a 5-character long word consisting of a single known letter in all of its possible positions.\nUse "
+          "underscores to represent the positions the letter is not in.")
     while cont:
         pattern = input("Enter a pattern or hit enter to finish: ")
         if pattern == "":
