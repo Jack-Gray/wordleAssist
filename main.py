@@ -98,9 +98,9 @@ def get_constraints(patterns):
             char = pattern[i]
             if char != "_":
                 if char not in constraints:
-                    constraints[char] = [i]
+                    constraints[char] = {i}
                 else:
-                    constraints[char].append(i)
+                    constraints[char].add(i)
     return constraints
 
 
